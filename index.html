@@ -1,0 +1,527 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover"/>
+  <title>PosterBay.in | Coming Soon — Your Idea. Printed. Delivered.</title>
+  <meta name="description" content="PosterBay.in — India's on-demand 3D printing and custom product studio. Zero inventory, infinite personalisation, delivered to your door."/>
+  <meta name="keywords" content="PosterBay, 3D printing, custom products, personalised gifts, Hot Wheels display, car frames, Bengaluru, coming soon"/>
+  <meta name="author" content="PosterBay.in"/>
+  <meta property="og:title" content="PosterBay.in | Coming Soon"/>
+  <meta property="og:description" content="Your Idea. Printed. Delivered. India's boldest on-demand 3D printing studio."/>
+  <meta property="og:type" content="website"/>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,800;0,900;1,700;1,800&family=DM+Sans:wght@300;400;500;600&family=Space+Grotesk:wght@400;500;600&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="styles.css"/>
+</head>
+<body>
+
+  <!-- CURSOR GLOW -->
+  <div class="cursor-glow" id="cursor-glow" aria-hidden="true"></div>
+
+  <!-- NOISE GRAIN OVERLAY -->
+  <div class="grain" aria-hidden="true"></div>
+
+  <!-- AMBIENT ORBS -->
+  <div class="ambient" aria-hidden="true">
+    <div class="orb orb-1"></div>
+    <div class="orb orb-2"></div>
+    <div class="orb orb-3"></div>
+  </div>
+
+  <!-- ANNOUNCE BAR -->
+  <div class="announce-bar" id="announce-bar">
+    <span class="announce-dot"></span>
+    <span>PosterBay.in launching Q3 2026 — Bengaluru's boldest on-demand 3D printing studio</span>
+    <button class="announce-close" id="announce-close" aria-label="Dismiss">✕</button>
+  </div>
+
+  <!-- NAV -->
+  <nav class="nav glass-nav" id="nav">
+    <a href="#" class="nav-logo" aria-label="PosterBay Home">
+      <div class="logo-wrap">
+        <img src="logo.png" alt="PosterBay.in" class="nav-logo-img"/>
+      </div>
+    </a>
+    <div class="nav-center">
+      <div class="nav-status">
+        <span class="status-dot"></span>
+        <span class="status-text">LAUNCHING Q3 2026</span>
+      </div>
+    </div>
+    <div class="nav-right">
+      <a href="#waitlist" class="btn-nav">Join Waitlist →</a>
+    </div>
+  </nav>
+
+  <!-- ══ HERO SECTION ══ -->
+  <section class="hero" id="hero">
+    <!-- PARTICLE CANVAS -->
+    <canvas class="particle-canvas" id="particle-canvas" aria-hidden="true"></canvas>
+    <div class="hero-inner">
+
+      <!-- LEFT: TEXT -->
+      <div class="hero-left">
+        <div class="hero-badge fade-up" style="--d:0.1s">
+          <span class="badge-dot"></span>
+          On-Demand 3D Printing Studio · Bengaluru
+        </div>
+
+        <h1 class="hero-h1 fade-up" style="--d:0.2s">
+          Your Idea.<br/>
+          <em>Printed.</em><br/>
+          <span class="h1-glow">Delivered.</span>
+        </h1>
+
+        <!-- TYPEWRITER -->
+        <div class="typewriter-wrap fade-up" style="--d:0.28s" aria-live="polite">
+          <span class="tw-prefix">We make it </span><span class="tw-text" id="tw-text">Personalised.</span>
+        </div>
+
+        <p class="hero-sub fade-up" style="--d:0.35s">
+          India's boldest on-demand 3D printing and custom product studio — coming soon. Zero inventory. Infinite personalisation.
+        </p>
+
+        <form class="hero-form fade-up" id="hero-form" style="--d:0.5s" novalidate>
+          <!-- LIVE FOMO COUNTER -->
+          <div class="fomo-badge" id="fomo-badge">
+            <span class="fomo-fire">🔥</span>
+            <span><strong id="fomo-count">47</strong> people already on the waitlist</span>
+          </div>
+          <div class="form-shell" id="hero-shell">
+            <input type="email" id="hero-email" class="form-input" placeholder="your@email.com" required aria-label="Email for waitlist"/>
+            <button type="submit" class="btn-primary" id="hero-btn">
+              <span class="btn-label">Join Waitlist</span>
+              <span class="btn-icon">→</span>
+            </button>
+          </div>
+          <div class="form-msg" id="hero-msg" aria-live="polite"></div>
+          <p class="form-hint">No spam. One email on launch day.</p>
+        </form>
+
+        <div class="hero-stats fade-up" style="--d:0.65s">
+          <div class="hstat">
+            <span class="hstat-n">₹0</span>
+            <span class="hstat-l">Inventory Risk</span>
+          </div>
+          <div class="hstat-sep"></div>
+          <div class="hstat">
+            <span class="hstat-n">48hr</span>
+            <span class="hstat-l">Delivery</span>
+          </div>
+          <div class="hstat-sep"></div>
+          <div class="hstat">
+            <span class="hstat-n">100%</span>
+            <span class="hstat-l">Custom</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- RIGHT: 3D HERO VISUAL -->
+      <div class="hero-right fade-up" style="--d:0.3s" aria-hidden="true">
+        <div class="scene-wrap">
+          <!-- Floating 3D product card -->
+          <div class="product-stage" id="hero-card">
+            <div class="stage-inner">
+
+              <!-- Shelf with 3D printed products -->
+              <div class="stage-shelf">
+                <div class="shelf-surface">
+                  <!-- Car model silhouette -->
+                  <div class="product-car">
+                    <svg viewBox="0 0 160 60" fill="none" class="car-3d-svg">
+                      <path d="M15 42 L28 22 Q44 10 62 14 L102 13 Q126 10 134 22 L145 42 Q149 47 140 48 L122 49 Q116 56 108 56 Q100 56 97 49 L58 49 Q55 56 47 56 Q39 56 36 49 L20 48 Q11 47 15 42Z" fill="url(#carGrad)" opacity="0.95"/>
+                      <path d="M32 23 L48 15 L102 13 L124 21 L32 23Z" fill="white" opacity="0.18"/>
+                      <circle cx="47" cy="52" r="6" stroke="rgba(255,255,255,0.6)" stroke-width="1.5" fill="none"/>
+                      <circle cx="47" cy="52" r="2.5" fill="rgba(255,255,255,0.5)"/>
+                      <circle cx="112" cy="52" r="6" stroke="rgba(255,255,255,0.6)" stroke-width="1.5" fill="none"/>
+                      <circle cx="112" cy="52" r="2.5" fill="rgba(255,255,255,0.5)"/>
+                      <defs>
+                        <linearGradient id="carGrad" x1="0" y1="0" x2="160" y2="60" gradientUnits="userSpaceOnUse">
+                          <stop offset="0%" stop-color="#E8560A"/>
+                          <stop offset="100%" stop-color="#C4390A"/>
+                        </linearGradient>
+                      </defs>
+                    </svg>
+                    <div class="car-glow-under"></div>
+                  </div>
+
+                  <!-- Hot Wheels mini display -->
+                  <div class="hw-display">
+                    <div class="hw-frame">
+                      <div class="hw-row">
+                        <div class="hw-cell"><div class="hw-c c-red"></div></div>
+                        <div class="hw-cell"><div class="hw-c c-blue"></div></div>
+                        <div class="hw-cell"><div class="hw-c c-gold"></div></div>
+                      </div>
+                      <div class="hw-row">
+                        <div class="hw-cell"><div class="hw-c c-silver"></div></div>
+                        <div class="hw-cell"><div class="hw-c c-purple"></div></div>
+                        <div class="hw-cell"><div class="hw-c c-green"></div></div>
+                      </div>
+                    </div>
+                    <div class="hw-label">HOT WHEELS DISPLAY FRAME</div>
+                  </div>
+
+                  <!-- Desk organizer -->
+                  <div class="desk-org">
+                    <div class="do-body">
+                      <div class="do-slot s-tall"></div>
+                      <div class="do-slot s-med"></div>
+                      <div class="do-slot s-short"></div>
+                    </div>
+                    <div class="do-glow"></div>
+                  </div>
+                </div>
+                <div class="shelf-ledge"></div>
+              </div>
+
+              <!-- Card info overlay -->
+              <div class="stage-overlay">
+                <div class="stage-badge">
+                  <span class="sb-dot"></span>
+                  BAMBU LAB · IN-HOUSE PRINTED
+                </div>
+                <p class="stage-title">3D Printed on Demand</p>
+              </div>
+
+              <!-- Gloss shine overlay -->
+              <div class="stage-shine" id="stage-shine"></div>
+            </div>
+
+            <!-- Bottom glow -->
+            <div class="stage-bottom-glow"></div>
+          </div>
+
+          <!-- Floating chips -->
+          <div class="float-chip chip-a">🎯 Zero Inventory</div>
+          <div class="float-chip chip-b">⚡ 48hr Delivery</div>
+          <div class="float-chip chip-c">🎨 100% Custom</div>
+
+          <!-- Orb accents -->
+          <div class="scene-orb so-1"></div>
+          <div class="scene-orb so-2"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══ MARQUEE TICKER ══ -->
+  <div class="marquee-bar" aria-label="Features ticker" aria-hidden="true">
+    <div class="marquee-track">
+      <span class="marquee-inner" id="marquee-inner">
+        <span class="mt-item"><span class="mt-icon">🖨️</span> On-Demand 3D Printing</span>
+        <span class="mt-sep">·</span>
+        <span class="mt-item"><span class="mt-icon">📦</span> Zero Inventory Risk</span>
+        <span class="mt-sep">·</span>
+        <span class="mt-item"><span class="mt-icon">⚡</span> 48-Hour Delivery</span>
+        <span class="mt-sep">·</span>
+        <span class="mt-item"><span class="mt-icon">🎯</span> 100% Customisable</span>
+        <span class="mt-sep">·</span>
+        <span class="mt-item"><span class="mt-icon">🇮🇳</span> Made in Bengaluru</span>
+        <span class="mt-sep">·</span>
+        <span class="mt-item"><span class="mt-icon">🔧</span> Bambu Lab Powered</span>
+        <span class="mt-sep">·</span>
+        <span class="mt-item"><span class="mt-icon">✨</span> No Minimum Order</span>
+        <span class="mt-sep">·</span>
+        <!-- duplicate for seamless loop -->
+        <span class="mt-item"><span class="mt-icon">🖨️</span> On-Demand 3D Printing</span>
+        <span class="mt-sep">·</span>
+        <span class="mt-item"><span class="mt-icon">📦</span> Zero Inventory Risk</span>
+        <span class="mt-sep">·</span>
+        <span class="mt-item"><span class="mt-icon">⚡</span> 48-Hour Delivery</span>
+        <span class="mt-sep">·</span>
+        <span class="mt-item"><span class="mt-icon">🎯</span> 100% Customisable</span>
+        <span class="mt-sep">·</span>
+        <span class="mt-item"><span class="mt-icon">🇮🇳</span> Made in Bengaluru</span>
+        <span class="mt-sep">·</span>
+        <span class="mt-item"><span class="mt-icon">🔧</span> Bambu Lab Powered</span>
+        <span class="mt-sep">·</span>
+        <span class="mt-item"><span class="mt-icon">✨</span> No Minimum Order</span>
+        <span class="mt-sep">·</span>
+      </span>
+    </div>
+  </div>
+
+  <!-- ══ COUNTDOWN TIMER ══ -->
+  <section class="countdown-section" id="countdown">
+    <div class="container">
+      <p class="cd-label">Launching In</p>
+      <div class="cd-grid">
+        <div class="cd-box glass-card">
+          <div class="cd-num" id="cd-days">30</div>
+          <div class="cd-unit">DAYS</div>
+        </div>
+        <div class="cd-sep">:</div>
+        <div class="cd-box glass-card">
+          <div class="cd-num" id="cd-hours">00</div>
+          <div class="cd-unit">HOURS</div>
+        </div>
+        <div class="cd-sep">:</div>
+        <div class="cd-box glass-card">
+          <div class="cd-num" id="cd-mins">00</div>
+          <div class="cd-unit">MINUTES</div>
+        </div>
+        <div class="cd-sep">:</div>
+        <div class="cd-box glass-card">
+          <div class="cd-num" id="cd-secs">00</div>
+          <div class="cd-unit">SECONDS</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- DIVIDER -->
+  <div class="divider-bar">
+    <span class="db-line"></span>
+    <span class="db-text">WHAT'S COMING</span>
+    <span class="db-line"></span>
+  </div>
+
+  <!-- ══ PRODUCT CARDS ══ -->
+  <section class="products" id="products">
+    <div class="container">
+      <div class="sec-header reveal">
+        <p class="sec-eyebrow">4 Product Categories</p>
+        <h2 class="sec-heading">What We're Building,<br/><em>For the Bold.</em></h2>
+        <p class="sec-sub">Built for the bold. Printed for you.</p>
+      </div>
+
+      <div class="prod-grid">
+
+        <!-- Card 1 -->
+        <div class="prod-card glass-card tilt-card reveal" style="--rd:0.1s">
+          <div class="prod-visual pv-gifts">
+            <div class="gift-scene">
+              <div class="gift-plate">
+                <div class="gp-ridge"></div>
+                <span class="gp-name">RAHUL</span>
+                <div class="gp-ridge"></div>
+              </div>
+              <div class="gift-keyring">
+                <div class="kr-ring"></div>
+                <div class="kr-charm">RK</div>
+              </div>
+              <div class="gift-fig">
+                <div class="gf-head"></div>
+                <div class="gf-body"></div>
+              </div>
+            </div>
+            <div class="pv-glow glow-orange"></div>
+          </div>
+          <div class="prod-body">
+            <span class="prod-num">01</span>
+            <h3 class="prod-title">Personalised 3D Gifts</h3>
+            <p class="prod-desc">Custom name plates, miniature figurines, and personalised keychains — each printed just for your recipient.</p>
+            <ul class="prod-tags">
+              <li>Name Plates</li><li>Figurines</li><li>Keychains</li>
+            </ul>
+          </div>
+          <div class="card-shine-layer"></div>
+        </div>
+
+        <!-- Card 2 -->
+        <div class="prod-card glass-card tilt-card reveal" style="--rd:0.2s">
+          <div class="prod-visual pv-decor">
+            <div class="decor-scene">
+              <div class="decor-planter">
+                <div class="dp-pot"></div>
+                <div class="dp-leaf"></div>
+              </div>
+              <div class="decor-org">
+                <div class="do-box"></div>
+                <div class="do-pen pen1"></div>
+                <div class="do-pen pen2"></div>
+              </div>
+              <div class="decor-cable">
+                <div class="dc-body">
+                  <div class="dc-hole h1"></div>
+                  <div class="dc-hole h2"></div>
+                  <div class="dc-hole h3"></div>
+                </div>
+              </div>
+            </div>
+            <div class="pv-glow glow-blue"></div>
+          </div>
+          <div class="prod-body">
+            <span class="prod-num">02</span>
+            <h3 class="prod-title">Home & Office Decor</h3>
+            <p class="prod-desc">3D-printed planters, desk organisers, cable managers — functional art for your living room and workspace.</p>
+            <ul class="prod-tags">
+              <li>Planters</li><li>Desk Organisers</li><li>Cable Managers</li>
+            </ul>
+          </div>
+          <div class="card-shine-layer"></div>
+        </div>
+
+        <!-- Card 3 — HIGHLIGHTED -->
+        <div class="prod-card glass-card tilt-card card-hero reveal" style="--rd:0.3s">
+          <div class="card-hero-badge">⭐ MOST POPULAR</div>
+          <div class="prod-visual pv-cars">
+            <div class="cars-scene">
+              <div class="car3d-main">
+                <svg viewBox="0 0 140 55" fill="none" class="car3d-svg">
+                  <path d="M12 38 L24 20 Q38 9 55 12 L90 11 Q112 9 118 20 L128 38 Q131 42 123 43 L107 44 Q102 50 95 50 Q88 50 85 44 L50 44 Q47 50 40 50 Q33 50 30 44 L17 43 Q9 42 12 38Z" fill="url(#cg2)"/>
+                  <path d="M28 20 L42 13 L90 11 L108 19 L28 20Z" fill="white" opacity="0.2"/>
+                  <circle cx="40" cy="47" r="5" stroke="white" stroke-width="1.5" fill="none"/>
+                  <circle cx="40" cy="47" r="2" fill="rgba(255,255,255,0.7)"/>
+                  <circle cx="98" cy="47" r="5" stroke="white" stroke-width="1.5" fill="none"/>
+                  <circle cx="98" cy="47" r="2" fill="rgba(255,255,255,0.7)"/>
+                  <defs>
+                    <linearGradient id="cg2" x1="0" y1="0" x2="140" y2="55" gradientUnits="userSpaceOnUse">
+                      <stop offset="0%" stop-color="#E8560A"/>
+                      <stop offset="100%" stop-color="#B84308"/>
+                    </linearGradient>
+                  </defs>
+                </svg>
+                <div class="car3d-glow"></div>
+              </div>
+              <div class="hw-mini">
+                <div class="hwm-slot"><div class="hwm-c hwm-red"></div></div>
+                <div class="hwm-slot"><div class="hwm-c hwm-blue"></div></div>
+                <div class="hwm-slot"><div class="hwm-c hwm-gold"></div></div>
+                <div class="hwm-slot"><div class="hwm-c hwm-silver"></div></div>
+              </div>
+              <div class="bambu-tag">BAMBU LAB</div>
+            </div>
+            <div class="pv-glow glow-hero"></div>
+          </div>
+          <div class="prod-body">
+            <span class="prod-num">03</span>
+            <h3 class="prod-title">3D Car Frames & Collectibles</h3>
+            <p class="prod-desc">Diecast display frames, Hot Wheels wall grids, and custom car figurines — printed in-house on our Bambu Lab printer.</p>
+            <ul class="prod-tags">
+              <li>Hot Wheels Frames</li><li>Diecast Grids</li><li>Car Figurines</li>
+            </ul>
+          </div>
+          <div class="card-shine-layer"></div>
+        </div>
+
+        <!-- Card 4 -->
+        <div class="prod-card glass-card tilt-card reveal" style="--rd:0.4s">
+          <div class="prod-visual pv-merch">
+            <div class="merch-scene">
+              <div class="merch-box">
+                <div class="mb-brand"></div>
+                <div class="mb-items">
+                  <div class="mb-item mbi-1"></div>
+                  <div class="mb-item mbi-2"></div>
+                  <div class="mb-item mbi-3"></div>
+                </div>
+                <span class="mb-tag">YOUR BRAND</span>
+              </div>
+            </div>
+            <div class="pv-glow glow-green"></div>
+          </div>
+          <div class="prod-body">
+            <span class="prod-num">04</span>
+            <h3 class="prod-title">Business Merchandise</h3>
+            <p class="prod-desc">Branded giveaways, startup kits, and event merch — on-demand, zero minimum order, fully customised.</p>
+            <ul class="prod-tags">
+              <li>Branded Giveaways</li><li>Startup Kits</li><li>No Min Order</li>
+            </ul>
+          </div>
+          <div class="card-shine-layer"></div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- DIVIDER -->
+  <div class="divider-bar">
+    <span class="db-line"></span>
+    <span class="db-text">WHY POSTERBAY</span>
+    <span class="db-line"></span>
+  </div>
+
+  <!-- ══ WHY SECTION ══ -->
+  <section class="why-section" id="why">
+    <div class="container">
+      <div class="sec-header reveal">
+        <h2 class="sec-heading">The Studio Built Different.</h2>
+        <p class="sec-sub">No inventory. No middlemen. Just your idea — printed and delivered.</p>
+      </div>
+      <div class="why-grid">
+        <div class="why-card glass-card reveal" style="--rd:0.1s">
+          <div class="why-icon">📦</div>
+          <div class="why-num">₹0</div>
+          <div class="why-lbl">Inventory Risk</div>
+          <p class="why-desc">We print only when you order. Zero wastage, zero upfront stock cost.</p>
+        </div>
+        <div class="why-card glass-card reveal" style="--rd:0.2s">
+          <div class="why-icon">⚡</div>
+          <div class="why-num">48hr</div>
+          <div class="why-lbl">Delivery</div>
+          <p class="why-desc">From order confirmation to your doorstep — targeting 48-hour delivery across Bengaluru.</p>
+        </div>
+        <div class="why-card glass-card reveal" style="--rd:0.3s">
+          <div class="why-icon">🎨</div>
+          <div class="why-num">100%</div>
+          <div class="why-lbl">Customisable</div>
+          <p class="why-desc">Every product made to your exact specs — colour, size, text, shape. Nothing is generic.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══ FOOTER ══ -->
+  <footer class="footer" id="footer">
+    <div class="container">
+
+      <div class="footer-glass glass-card reveal">
+        <div class="footer-glow-bg"></div>
+
+        <div class="footer-badge reveal" style="--rd:0.1s">
+          <span class="badge-dot"></span>
+          Secure Early Access
+        </div>
+
+        <h2 class="footer-h2 reveal" style="--rd:0.2s">
+          Be First.<br/><em>Not Second.</em>
+        </h2>
+        <p class="footer-sub reveal" style="--rd:0.3s">
+          Waitlist members get <strong>20% off their first order</strong>, first access to limited launch editions, and a numbered collector certificate.
+        </p>
+
+        <form class="footer-form reveal" id="footer-form" style="--rd:0.4s" novalidate>
+          <div class="form-shell" id="footer-shell">
+            <input type="email" id="footer-email" class="form-input" placeholder="your@email.com" required aria-label="Email for waitlist"/>
+            <button type="submit" class="btn-primary" id="footer-btn">
+              <span class="btn-label">Join Waitlist</span>
+              <span class="btn-icon">→</span>
+            </button>
+          </div>
+          <div class="form-msg" id="footer-msg" aria-live="polite"></div>
+        </form>
+
+        <div class="perks-row reveal" style="--rd:0.5s">
+          <div class="perk"><span>🎟</span><span>20% off</span></div>
+          <div class="perk"><span>⚡</span><span>First drop</span></div>
+          <div class="perk"><span>🔢</span><span>Edition plates</span></div>
+          <div class="perk"><span>🎨</span><span>3D beta access</span></div>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <div class="footer-logo-wrap">
+          <img src="logo.png" alt="PosterBay.in" class="footer-logo-img"/>
+        </div>
+        <p class="footer-copy">© 2026 PosterBay.in — Bengaluru, India</p>
+        <div class="socials">
+          <a href="#" class="soc-btn" aria-label="Instagram">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg>
+          </a>
+          <a href="#" class="soc-btn" aria-label="WhatsApp">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>
+          </a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
