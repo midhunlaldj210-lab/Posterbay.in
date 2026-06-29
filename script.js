@@ -15,7 +15,6 @@ document.addEventListener('DOMContentLoaded', () => {
   initParticles();        // 2
   initTypewriter();       // 1
   initFomoCounter();      // 6
-  initCountdown();        // 4
 });
 
 /* ══════════════════════════════════════════
@@ -38,8 +37,8 @@ function initScrollReveal() {
    EXISTING: FORMS
 ══════════════════════════════════════════ */
 function initForms() {
-  setupForm('hero-form',   'hero-email',   'hero-btn',   'hero-msg');
   setupForm('footer-form', 'footer-email', 'footer-btn', 'footer-msg');
+  initContactForm();
 }
 
 function setupForm(fId, eId, bId, mId) {
@@ -305,7 +304,7 @@ function initTypewriter() {
   const el = document.getElementById('tw-text');
   if (!el) return;
 
-  const words = ['Personalised.', '3D Printed.', 'Delivered in 48hrs.', 'Made in India.'];
+  const words = ['Rapid Prototypes.', 'Premium Wall Art.', '3D Decor Frames.', 'Small Batch Parts.'];
   let idx = 0;
 
   function cycle() {
@@ -409,4 +408,59 @@ function initCountdown() {
 
   tick();
   setInterval(tick, 1000);
+}
+
+/* ══════════════════════════════════════════
+   NEW: CONTACT FORM HANDLER
+   ══════════════════════════════════════════ */
+function initContactForm() {
+  const form = document.getElementById('contact-form');
+  if (!form) return;
+  const nameEl = document.getElementById('contact-name');
+  const emailEl = document.getElementById('contact-email');
+  const typeEl = document.getElementById('contact-type');
+  const msgEl = document.getElementById('contact-message');
+  const btnEl = document.getElementById('contact-btn');
+  const statusEl = document.getElementById('contact-msg');
+
+  form.addEventListener('submit', (e) => {
+    e.preventDefault();
+    const name = nameEl ? nameEl.value.trim() : '';
+    const email = emailEl ? emailEl.value.trim() : '';
+    const type = typeEl ? typeEl.value : '';
+    const message = msgEl ? msgEl.value.trim() : '';
+
+    if (!name || !email || !message) {
+      showMsg(statusEl, '✕ Please fill in all required fields.', 'error');
+      return;
+    }
+    if (!isEmail(email)) {
+      showMsg(statusEl, '✕ Please enter a valid email address.', 'error');
+      return;
+    }
+
+    const lbl = btnEl.querySelector('.btn-label');
+    const origText = lbl ? lbl.textContent : btnEl.textContent;
+    if (lbl) lbl.textContent = 'Sending Message...';
+    btnEl.disabled = true;
+
+    setTimeout(() => {
+      if (lbl) lbl.textContent = '✓ Sent Successfully!';
+      btnEl.style.background = 'linear-gradient(135deg,#16a34a,#15803d)';
+      
+      if (nameEl) nameEl.value = '';
+      if (emailEl) emailEl.value = '';
+      if (typeEl) typeEl.selectedIndex = 0;
+      if (msgEl) msgEl.value = '';
+      
+      showMsg(statusEl, '✓ Thank you! We will get back to you shortly.', 'success');
+
+      setTimeout(() => {
+        if (lbl) lbl.textContent = origText;
+        btnEl.disabled = false;
+        btnEl.style.background = '';
+        if (statusEl) { statusEl.textContent = ''; statusEl.className = 'form-msg'; }
+      }, 5000);
+    }, 1200);
+  });
 }
